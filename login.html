@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In - Pantry to Plate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pantry to Plate</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pantry.html">Pantry</a>
+      <a href="meals.html">Meals</a>
+    </nav>
+  </header>
+
+  <main class="auth-section">
+    <h2>Log In</h2>
+
+    <input type="text" id="loginUsername" placeholder="Username" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button id="loginBtn" class="btn">Log In</button>
+
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    <div id="loginMessage" class="note"></div>
+  </main>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const message = document.getElementById('loginMessage');
+
+    loginBtn.addEventListener('click', () => {
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      if (!username || !password) {
+        message.textContent = "Please enter both username and password.";
+        return;
+      }
+
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if (!user) {
+        message.textContent = "Invalid username or password.";
+        return;
+      }
+
+      // Save logged-in user in sessionStorage
+      sessionStorage.setItem('loggedInUser', username);
+      message.textContent = `Welcome, ${username}! Redirecting to pantry...`;
+
+      setTimeout(() => {
+        window.location.href = 'pantry.html';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

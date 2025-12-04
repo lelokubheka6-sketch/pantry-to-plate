@@ -1,0 +1,89 @@
+/* --- Global --- */
+:root{
+  --bg: #F5EDE4;
+  --panel: #E6D5C3;
+  --accent: #D9C2A9;
+  --text: #333;
+  --muted: #777;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: 'Montserrat', system-ui, sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Header */
+header{
+  background:var(--panel);
+  padding:1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h1{margin:0}
+nav a{margin-left:1rem;text-decoration:none;color:var(--text);font-weight:500}
+nav a.active{text-decoration:underline}
+
+/* Hero / main */
+.hero{padding:3rem;text-align:center}
+.pantry-section, .meals-section{
+  width:90%;
+  max-width:720px;
+  margin:2rem auto;
+  padding:1.2rem;
+}
+
+/* Inputs & buttons */
+input#ingredientsInput{
+  width:100%;
+  padding:0.8rem;
+  border-radius:8px;
+  border:1px solid #d8d0c7;
+  margin-bottom:1rem;
+}
+.btn{
+  display:inline-block;
+  padding:0.6rem 1rem;
+  border:none;
+  border-radius:8px;
+  background:var(--accent);
+  cursor:pointer;
+  text-decoration:none;
+  color:var(--text);
+}
+
+/* Popup / bubble for ingredients */
+.popup{
+  background:#fff;
+  border-radius:12px;
+  padding:0.9rem 1rem;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom:1rem;
+  font-size:0.95rem;
+  color:var(--text);
+  border:1px solid #eee;
+}
+
+/* Meals display */
+.meals-group{margin-top:1rem}
+.meals-group h3{margin:0 0 0.4rem 0;font-size:1rem}
+.meals-group ul{list-style:none;padding-left:0}
+.meals-group li{
+  padding:0.6rem;
+  margin-bottom:0.5rem;
+  background:#fff;
+  border-radius:8px;
+  border:1px solid #f0e9e2;
+}
+
+/* note / fallback */
+.note{margin-top:1rem;font-style:italic;color:var(--muted)}
+
+/* small screens */
+@media (max-width:520px){
+  header{padding:0.8rem}
+  .popup{font-size:0.9rem}
+}

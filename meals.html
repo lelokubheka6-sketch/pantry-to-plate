@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meal Suggestions - Pantry to Plate</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Pantry to Plate</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pantry.html">Pantry</a>
+      <a href="meals.html" class="active">Meals</a>
+    </nav>
+  </header>
+
+  <main class="meals-section">
+    <!-- Popup / confirmation bubble: shows only the ingredients entered for this session -->
+    <div id="ingredientsPopup" class="popup" aria-live="polite" hidden></div>
+
+    <!-- Meals area: primary suggestions, then more suggestions -->
+    <section id="suggestions">
+      <h2>Meal Suggestions</h2>
+
+      <div id="primaryMeals" class="meals-group">
+        <h3>Main ideas</h3>
+        <ul id="primaryList"></ul>
+      </div>
+
+      <div id="moreMeals" class="meals-group">
+        <h3>More suggestions</h3>
+        <ul id="moreList"></ul>
+      </div>
+
+      <div id="noResults" class="note" hidden></div>
+
+      <button id="backBtn" class="btn">Back to Pantry</button>
+    </section>
+  </main>
+
+  <script src="meals.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Pantry to Plate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pantry to Plate</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pantry.html">Pantry</a>
+      <a href="meals.html">Meals</a>
+    </nav>
+  </header>
+
+  <main class="auth-section">
+    <h2>Create Your Account</h2>
+
+    <input type="text" id="signupUsername" placeholder="Username" />
+    <input type="password" id="signupPassword" placeholder="Password" />
+    <button id="signupBtn" class="btn">Sign Up</button>
+
+    <p>Already have an account? <a href="login.html">Log In</a></p>
+    <div id="signupMessage" class="note"></div>
+  </main>
+
+  <script>
+    const signupBtn = document.getElementById('signupBtn');
+    const message = document.getElementById('signupMessage');
+
+    signupBtn.addEventListener('click', () => {
+      const username = document.getElementById('signupUsername').value.trim();
+      const password = document.getElementById('signupPassword').value.trim();
+
+      if (!username || !password) {
+        message.textContent = "Please enter both username and password.";
+        return;
+      }
+
+      // Get existing users from localStorage
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      // Check if username already exists
+      if (users.find(u => u.username === username)) {
+        message.textContent = "Username already exists. Try another.";
+        return;
+      }
+
+      // Add new user
+      users.push({ username, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      message.textContent = "Account created successfully! Redirecting to login...";
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
